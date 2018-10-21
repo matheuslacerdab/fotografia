@@ -36,12 +36,66 @@
       </div>
     </nav>
 
+    <br><br>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning">
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>
+            {{ message }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>Área do Cliente</h1>
-      </div>
+        <div class="col-md-4 col-md-offset-4" style="top: 20%; position: absolute; left: 35%;">
+          <h1>Área do Cliente</h1>
+          <form action="" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+              <label>Usuário:</label>
+              {{ form.username(class="form-control", placeholder="Usuário")}}
+              {% if form.errors.username %}
+                <div class="alert alert-danger" role="alert">
+                  <ul>
+                    {% for e in form.errors.username %}
+                      <li>{{ e }}</li>
+                      {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
 
+            <div class="form-group">
+              <label>Senha:</label>
+              {{ form.password(class="form-control")}}
+              {% if form.errors.password %}
+                <div class="alert alert-danger" role="alert">
+                  <ul>
+                    {% for e in form.errors.passwor %}
+                      <li>{{ e }}</li>
+                      {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="checkbox">
+              <label>
+                {{ form.rememberMe }} Relembrar-me
+              </label>
+            </div>
+            <button type="submit" class="btn btn-default">Logar</button>
+          </form>
+        </div>
+      </div>
     </main><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
