@@ -1,0 +1,7 @@
+# IDEA Ignores #
+################
+*.pyc
+*~
+__pycache__
+venv
+migrations
