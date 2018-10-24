@@ -1,4 +1,4 @@
-#!/home/matheus/Documentos/Desenvolvimento/fotografia/venv/bin/python
+#!/home/mayalu/fotografia/venv/bin/python
 
 import sys
 import getopt
