@@ -12,8 +12,8 @@ def load_user(id):
 def index():
     return render_template('index.html')
 
-@app.route('/area_do_cliente/', methods=["GET","POST"])
-def areaDoCliente():
+@app.route('/login/', methods=["GET","POST"])
+def login():
     form = LoginForm()
     if form.validate_on_submit:
         user = User.query.filter_by(username=form.username.data).first()
@@ -22,6 +22,12 @@ def areaDoCliente():
             flash("Logged in.")
         else:
             flash("Invalid Login.")
+    
+    return render_template('index.html') 
+
+@app.route('/area_do_cliente/', methods=["GET","POST"])
+def areaDoCliente():
+    form = LoginForm()
     return render_template('area_do_cliente.html', form=form) 
 
 @app.route('/logout/')
@@ -29,3 +35,8 @@ def logout():
     logout_user()
     flash("Logged Out.")
     return redirect(url_for("index"))
+
+
+@app.route('/sobre/')
+def sobre():
+    return render_template('sobre.html')
