@@ -23,7 +23,7 @@ def login():
         else:
             flash("Invalid Login.")
     
-    return render_template('index.html') 
+    return render_template('dashboard.html') 
 
 @app.route('/area_do_cliente/', methods=["GET","POST"])
 def areaDoCliente():
